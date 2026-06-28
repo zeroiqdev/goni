@@ -39,31 +39,31 @@ export default function Benefits() {
       <div className="bg-[#f2e7db] py-10 md:py-12">
         <div className="section-container">
           {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {benefits.map((benefit, i) => (
-            <div
-              key={i}
-              className="flex items-center lg:items-start gap-4 p-2"
-            >
-              <div className="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
-                <Image
-                  src={benefit.imageSrc}
-                  alt={benefit.title}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 56px, 64px"
-                />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {benefits.map((benefit, i) => (
+              <div
+                key={i}
+                className="flex items-center lg:items-start gap-4 p-2"
+              >
+                <div className="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
+                  <Image
+                    src={benefit.imageSrc}
+                    alt={benefit.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 56px, 64px"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="font-sans text-brand-green text-base md:text-lg font-bold leading-tight">
+                    {benefit.title}
+                  </h3>
+                  <p className="font-sans text-sm text-brand-green/85 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
-              <div className="space-y-1">
-                <h3 className="font-sans text-brand-green text-base md:text-lg font-bold leading-tight">
-                  {benefit.title}
-                </h3>
-                <p className="font-sans text-sm text-brand-green/85 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
           </div>
         </div>
       </div>
