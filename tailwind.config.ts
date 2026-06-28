@@ -24,8 +24,8 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],
-        sans: ["Google Sans", "Inter", "system-ui", "sans-serif"],
-        "google-sans": ["Google Sans", "sans-serif"],
+        sans: ["Product Sans", "Google Sans", "Inter", "system-ui", "sans-serif"],
+        "google-sans": ["Product Sans", "Google Sans", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
