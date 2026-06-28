@@ -59,7 +59,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center gap-0.5 px-4 py-1.5 text-xs font-semibold text-brand-dark hover:text-brand-green transition-colors duration-200"
+                className="flex items-center gap-0.5 px-4 py-1.5 text-xs font-semibold text-brand-green hover:text-brand-green-dark transition-colors duration-200"
                 id={`nav-link-${link.label.toLowerCase().replace(/[^a-z0-html]+/g, "-")}`}
               >
                 {link.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
           {/* Right-side actions — pushed to far right */}
           <div className="flex items-center ml-auto" id="nav-actions">
             {/* Currency / Region */}
-            <span className="hidden xl:block text-xs font-semibold text-brand-dark whitespace-nowrap">
+            <span className="hidden xl:block text-xs font-semibold text-brand-green whitespace-nowrap">
               NGN | Nigeria
             </span>
 
@@ -170,7 +170,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="py-3 px-4 rounded-xl text-brand-dark font-sans font-medium hover:bg-brand-green/5 hover:text-brand-green transition-all duration-200"
+              className="py-3 px-4 rounded-xl text-brand-green font-sans font-medium hover:bg-brand-green/5 hover:text-brand-green-dark transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
               style={{ animationDelay: `${i * 50}ms` }}
               id={`nav-mobile-link-${link.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
