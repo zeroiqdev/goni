@@ -41,7 +41,7 @@ export default function FeaturedProducts() {
         {/* Headings */}
         <div className="text-center mb-12">
           <p className="font-google-sans text-brand-gold text-lg mb-2">
-            Our Bestselling Products
+            Our Products
           </p>
           <h2 className="font-google-sans text-3xl md:text-4xl font-bold text-brand-green">
             Premium Shea Butter

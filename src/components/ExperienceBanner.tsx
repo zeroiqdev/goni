@@ -19,10 +19,10 @@ export default function ExperienceBanner() {
       {/* Content Overlay */}
       <div className="section-container relative z-10 w-full">
         <div className="max-w-xl text-left">
-          <p className="font-sans text-sm md:text-base text-white/90 tracking-wide mb-3">
+          <p className="font-sans text-base md:text-lg lg:text-xl font-medium text-white/90 tracking-wide mb-3">
             Experience Shea Butter
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold italic text-white leading-tight mb-8">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-normal italic text-white leading-tight mb-8">
             Good For Your Skin.
             <br />
             Better for Your World.

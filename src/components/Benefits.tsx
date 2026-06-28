@@ -26,7 +26,7 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="py-12 md:py-16 bg-[#FDFBF7]" id="benefits-section">
+    <section className="py-12 md:py-16 bg-[#f2e7db]" id="benefits-section">
       <div className="section-container">
         {/* Header */}
         <div className="text-center mb-10 md:mb-12">
