@@ -26,16 +26,19 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="py-12 md:py-16 bg-[#f2e7db]" id="benefits-section">
+    <section className="bg-white pt-12 md:pt-16 pb-6 md:pb-8" id="benefits-section">
       <div className="section-container">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-center mb-8 md:mb-10">
           <h2 className="font-sans text-brand-green text-lg md:text-xl font-bold tracking-wider uppercase">
             Why You&apos;ll Love It
           </h2>
         </div>
+      </div>
 
-        {/* Benefits Grid */}
+      <div className="bg-[#f2e7db] py-10 md:py-12">
+        <div className="section-container">
+          {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {benefits.map((benefit, i) => (
             <div
@@ -61,6 +64,7 @@ export default function Benefits() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
