@@ -24,7 +24,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Google Sans", "Inter", "system-ui", "sans-serif"],
         "google-sans": ["Google Sans", "sans-serif"],
       },
       animation: {
