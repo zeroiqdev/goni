@@ -18,6 +18,8 @@ export default function Home() {
         <OurStory />
         <Benefits />
         <ExperienceBanner />
+        {/* Completely white space between the last banner and the footer */}
+        <div className="bg-white h-10 md:h-16 w-full" />
       </main>
       <Footer />
     </>

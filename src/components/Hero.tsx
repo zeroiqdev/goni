@@ -85,8 +85,8 @@ export default function Hero() {
                 : "opacity-0 translate-x-10"
             }`}
           >
-            {/* Product image — no border, no rounding */}
-            <div className="relative w-full aspect-[4/3]">
+            {/* Product image — with rounded corners */}
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm">
               <Image
                 src="https://res.cloudinary.com/dyg7neetr/image/upload/v1780560349/ChatGPT_Image_May_12_2026_12_14_58_PM_npy85w.png"
                 alt="Goni's Shea Butter Products — Premium unrefined shea butter in various sizes"

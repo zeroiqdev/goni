@@ -92,7 +92,7 @@ export default function ProductCard({
         {isWholesale ? (
           <Link
             href={`/bulk/quote?product=${encodeURIComponent(title)}`}
-            className="block w-full text-center bg-[#1B4D3E] text-white py-3.5 px-4 rounded-none text-sm font-semibold font-sans
+            className="block w-full text-center bg-[#1B4D3E] text-white py-3.5 px-4 rounded-lg text-sm font-semibold font-sans
                        hover:bg-[#153D31] transition-all duration-300 uppercase tracking-wider shadow-sm"
             id={`request-quote-${slug}`}
           >
@@ -101,7 +101,7 @@ export default function ProductCard({
         ) : (
           <button
             onClick={() => addToCart({ id, title, slug, price, weight, imageUrl })}
-            className="w-full bg-[#1B4D3E] text-white py-3.5 px-4 rounded-none text-sm font-semibold font-sans
+            className="w-full bg-[#1B4D3E] text-white py-3.5 px-4 rounded-lg text-sm font-semibold font-sans
                        hover:bg-[#153D31] transition-all duration-300 uppercase tracking-wider shadow-sm"
             id={`add-to-cart-${slug}`}
           >

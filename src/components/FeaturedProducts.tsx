@@ -87,7 +87,7 @@ export default function FeaturedProducts() {
               {/* CTA Button */}
               <Link
                 href={product.href}
-                className={`inline-block px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 ${
+                className={`inline-block px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
                   product.filled
                     ? "bg-brand-green text-white hover:bg-brand-green-dark"
                     : "bg-white text-brand-dark border border-brand-dark/30 hover:border-brand-green hover:text-brand-green"

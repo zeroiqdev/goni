@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-[#f2e7db] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
         isScrolled ? "shadow-md py-3" : "py-4"
       }`}
     >
@@ -52,7 +52,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation — pill container */}
           <div
-            className="hidden lg:flex items-center border border-brand-green/10 rounded-md px-1.5 py-1 bg-white/45 backdrop-blur-md shadow-sm"
+            className="hidden lg:flex items-center border border-brand-green/10 rounded-md px-1.5 py-1 bg-[#f2e7db] shadow-sm"
             id="nav-desktop-links"
           >
             {navLinks.map((link) => (

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function ExperienceBanner() {
   return (
-    <section className="relative overflow-hidden bg-brand-green py-14 md:py-20 lg:py-24 min-h-[300px] md:min-h-[360px] flex items-center mb-10 md:mb-16" id="experience-banner">
+    <section className="relative overflow-hidden bg-brand-green py-14 md:py-20 lg:py-24 min-h-[300px] md:min-h-[360px] flex items-center mb-0" id="experience-banner">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
