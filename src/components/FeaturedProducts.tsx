@@ -66,28 +66,29 @@ export default function FeaturedProducts() {
                 />
               </div>
 
-              {/* Product Info */}
-              <h3 className="font-google-sans text-xl md:text-2xl font-semibold text-brand-green mb-1">
-                {product.name}
-              </h3>
-              <p className="text-sm text-brand-green/80 font-google-sans mb-4 max-w-[200px]">
-                {product.description}
-              </p>
-
-              {/* Price */}
-              {product.price && (
-                <p className="font-google-sans text-xl font-bold text-brand-green mb-5">
-                  {product.price}
+              <div className="flex flex-1 flex-col items-center">
+                {/* Product Info */}
+                <h3 className="font-google-sans text-xl md:text-2xl font-semibold text-brand-green mb-1">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-brand-green/80 font-google-sans mb-4 max-w-[200px]">
+                  {product.description}
                 </p>
-              )}
 
-              {/* Spacer to push button to bottom when no price */}
-              {!product.price && <div className="mb-5" />}
+                {/* Price */}
+                <div className="mb-5 flex min-h-[28px] items-center">
+                  {product.price && (
+                    <p className="font-google-sans text-xl font-bold text-brand-green">
+                      {product.price}
+                    </p>
+                  )}
+                </div>
+              </div>
 
               {/* CTA Button */}
               <Link
                 href={product.href}
-                className={`inline-block px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
+                className={`mt-auto inline-flex min-h-[48px] min-w-[150px] items-center justify-center px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
                   product.filled
                     ? "bg-brand-green text-white hover:bg-brand-green-dark"
                     : "bg-white text-brand-dark border border-brand-dark/30 hover:border-brand-green hover:text-brand-green"

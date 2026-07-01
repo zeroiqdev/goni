@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WholesaleFormClient from "@/components/WholesaleFormClient";
@@ -151,11 +152,16 @@ export default function WholesaleQuotePage() {
 
           <div className="section-container relative z-10 flex h-full items-center">
             <div className="max-w-[240px] text-brand-green drop-shadow-sm sm:max-w-sm md:max-w-lg">
-              <h1 className="font-serif text-2xl font-bold italic leading-tight sm:text-3xl md:text-5xl lg:text-6xl">
+              <h1 className="font-serif text-xl font-bold italic leading-tight sm:text-2xl md:text-4xl lg:text-5xl">
                 Request a Wholesale Quote
               </h1>
+              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 mt-2 flex items-center gap-1.5 select-none">
+                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
+                <span className="text-brand-green/45">&gt;</span>
+                <span className="font-semibold text-brand-green">Request Quote</span>
+              </nav>
               <p className="mt-3 hidden font-google-sans text-sm leading-relaxed md:block lg:text-base">
-                Tell us what you need and we&apos;ll get back to you with pricing, availability, and delivery options for your business.
+                Tell us about your business needs and we&apos;ll get back to you with pricing, availability, and delivery options for your business.
               </p>
             </div>
           </div>
@@ -235,12 +241,12 @@ export default function WholesaleQuotePage() {
           </div>
         </section>
 
-        <section className="relative h-[160px] w-full overflow-hidden bg-[#ead8bb] sm:h-[220px] md:h-[300px] lg:h-[380px]" id="wholesale-final-banner">
+        <section className="relative h-[160px] w-full overflow-hidden bg-[#ead8bb] sm:h-[220px] md:h-[300px] lg:h-[380px] flex items-center justify-center" id="wholesale-final-banner">
           <Image
             src="https://res.cloudinary.com/dyg7neetr/image/upload/v1780834337/1d7c82b0-483c-4d3f-a90a-76835e1d9531_nxosjq.png"
             alt="Goni's Shea Butter wholesale banner"
             fill
-            className="object-cover object-center"
+            className="object-cover object-center pointer-events-none"
             sizes="100vw"
           />
         </section>

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -33,7 +34,7 @@ export default function BulkPage() {
       <main className="flex-grow pt-20 animate-fade-in" id="bulk-page">
         {/* Banner Section */}
         <section
-          className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[400px] flex items-center overflow-hidden bg-[#e6cfb6]"
+          className="relative w-full h-[130px] sm:h-[180px] md:h-[240px] lg:h-[300px] flex items-center overflow-hidden bg-[#e6cfb6]"
           id="bulk-banner"
         >
           {/* Background Image */}
@@ -61,6 +62,11 @@ export default function BulkPage() {
                 for Businesses<br />
                 That Care
               </h1>
+              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 flex items-center gap-1.5 select-none pt-1">
+                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
+                <span className="text-brand-green/45">&gt;</span>
+                <span className="font-semibold text-brand-green">Bulk & Wholesale</span>
+              </nav>
               <p className="font-google-sans text-[11px] sm:text-xs md:text-sm lg:text-base text-brand-green/90 max-w-xs sm:max-w-md leading-relaxed">
                 Premium, 100% pure shea butter sourced from Northern Nigeria. Perfect for brands, manufacturers, and retail worldwide.
               </p>
@@ -68,65 +74,76 @@ export default function BulkPage() {
           </div>
         </section>
 
-        {/* Trust Badge Banner — full width, end to end */}
-        <section className="w-full bg-[#f3ece4] py-5 border-y border-[#e0cfc0]" id="bulk-trust-banner">
-          <div className="w-full max-w-none px-6 sm:px-12 lg:px-24">
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12 md:gap-x-16 lg:gap-x-24">
+        {/* Trust Banner (Same as product detail page, bg: #FAF2EA, text/icons: #1B4D3E) */}
+        <section className="mt-3 bg-[#FAF2EA] py-3 border-y border-[#E9E1D7]/30 px-4 sm:px-8 lg:px-16 overflow-x-auto" id="bulk-trust-banner">
+          <div className="flex flex-row flex-nowrap items-center justify-start sm:justify-center gap-5 sm:gap-8 md:gap-10 lg:gap-14 text-[#1B4D3E] min-w-max">
+            {/* Badge 1: Women-Sourced */}
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 sm:w-7 sm:h-7 text-[#1B4D3E]"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
+                />
+              </svg>
+              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+                Women-Sourced
+              </span>
+            </div>
 
-              {/* Women-Sourced */}
-              <div className="flex items-center gap-2.5" id="trust-women-sourced">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#1b4d3e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="10" r="4" />
-                  <circle cx="24" cy="10" r="4" />
-                  <circle cx="18" cy="8" r="4.5" />
-                  <path d="M4 28c0-4 3.6-7 8-7M32 28c0-4-3.6-7-8-7M10 21c0-4 3.6-7 8-7s8 3 8 7" />
-                </svg>
-                <span className="font-google-sans text-sm font-semibold text-brand-green">Women-Sourced</span>
+            {/* Badge 2: Handcrafted */}
+            <div className="flex items-center gap-2">
+              <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+                <Image
+                  src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782892990/Screenshot_2026-07-01_at_9.01.51_AM-removebg-preview_pqqp3t.png"
+                  alt="Handcrafted"
+                  fill
+                  style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
+                  sizes="28px"
+                />
               </div>
+              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+                Handcrafted
+              </span>
+            </div>
 
-              {/* Divider */}
-              <div className="hidden sm:block h-6 w-px bg-brand-green/20" />
-
-              {/* Handcrafted */}
-              <div className="flex items-center gap-2.5" id="trust-handcrafted">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#1b4d3e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M13 6c0-1.1.9-2 2-2h.5a2 2 0 0 1 2 2v8" />
-                  <path d="M17.5 6V5a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v9" />
-                  <path d="M22 7a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v9c0 6-4 14-10.5 14C9.2 30 5 24 5 18v-4a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v4" />
-                  <path d="M13 8V6a2 2 0 0 0-2-2h-.5A2 2 0 0 0 8.5 6v8" />
-                  <circle cx="18" cy="8" r="7" />
-                  <path d="M14 8c1-2 5-4 8-2" />
-                </svg>
-                <span className="font-google-sans text-sm font-semibold text-brand-green">Handcrafted</span>
+            {/* Badge 3: NAFDAC Approved */}
+            <div className="flex items-center gap-2">
+              <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+                <Image
+                  src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042455/idZQnoE5i__1775042204657-removebg-preview_jtltnf.png"
+                  alt="NAFDAC Approved"
+                  fill
+                  style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
+                  sizes="28px"
+                />
               </div>
+              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+                NAFDAC Approved
+              </span>
+            </div>
 
-              {/* Divider */}
-              <div className="hidden sm:block h-6 w-px bg-brand-green/20" />
-
-              {/* Nafdac */}
-              <div className="flex items-center gap-2.5" id="trust-nafdac">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#1b4d3e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="4" y="6" width="28" height="24" rx="5" />
-                  <text x="18" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="9" fontWeight="bold" fill="#1b4d3e" stroke="none">FDA</text>
-                </svg>
-                <span className="font-google-sans text-sm font-semibold text-brand-green">Nafdac No: A2-107554L</span>
+            {/* Badge 4: Natural */}
+            <div className="flex items-center gap-2">
+              <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+                <Image
+                  src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042870/organic_icon_sndktr.png"
+                  alt="Natural"
+                  fill
+                  style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
+                  sizes="28px"
+                />
               </div>
-
-              {/* Divider */}
-              <div className="hidden sm:block h-6 w-px bg-brand-green/20" />
-
-              {/* 100% Natural */}
-              <div className="flex items-center gap-2.5" id="trust-natural">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#1b4d3e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="18" cy="18" r="14" />
-                  <path d="M18 8c0 0-8 4-8 10s8 10 8 10" />
-                  <path d="M18 8c0 0 8 4 8 10s-8 10-8 10" />
-                  <path d="M8 18h20" />
-                  <path d="M18 8c-2 4-2 16 0 20" />
-                </svg>
-                <span className="font-google-sans text-sm font-semibold text-brand-green">100% Natural</span>
-              </div>
-
+              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+                Natural
+              </span>
             </div>
           </div>
         </section>
@@ -340,13 +357,13 @@ export default function BulkPage() {
         </section>
 
         {/* Final Contact CTA */}
-        <section className="bg-brand-green py-14 text-white sm:py-16" id="bulk-growth-cta">
+        <section className="bg-[#1d3e40] py-10 text-white sm:py-12 my-10 md:my-14" id="bulk-growth-cta">
           <div className="section-container">
-            <div className="grid items-center gap-8 md:grid-cols-[220px_1fr_auto] md:gap-10 lg:grid-cols-[260px_1fr_auto] lg:gap-12">
+            <div className="grid items-center gap-6 md:grid-cols-[160px_1fr_auto] md:gap-8 lg:grid-cols-[180px_1fr_auto] lg:gap-10">
               <div className="flex justify-center md:justify-start">
                 <svg
-                  width="180"
-                  height="140"
+                  width="120"
+                  height="90"
                   viewBox="0 0 220 160"
                   fill="none"
                   stroke="currentColor"
@@ -354,7 +371,7 @@ export default function BulkPage() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   aria-hidden="true"
-                  className="h-auto w-36 sm:w-44 lg:w-52"
+                  className="h-auto w-24 sm:w-28 lg:w-32"
                 >
                   <rect x="10" y="20" width="200" height="120" rx="14" />
                   <path d="M15 28l84 74c6 5 16 5 22 0l84-74" />
@@ -364,10 +381,10 @@ export default function BulkPage() {
               </div>
 
               <div className="text-center md:text-left">
-                <h2 className="font-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                <h2 className="font-serif text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">
                   Let&apos;s Grow Together
                 </h2>
-                <p className="mt-4 max-w-2xl font-google-sans text-2xl leading-relaxed sm:text-3xl">
+                <p className="mt-3 max-w-2xl font-google-sans text-sm leading-relaxed sm:text-base lg:text-lg">
                   Tell us about your business needs and we&apos;ll get back to you with the best solution.
                 </p>
               </div>
@@ -375,10 +392,10 @@ export default function BulkPage() {
               <div className="flex justify-center md:justify-end">
                 <a
                   href="/contact"
-                  className="inline-flex min-h-[72px] min-w-[240px] items-center justify-center rounded-lg border-2 border-white px-8 font-google-sans text-2xl font-medium text-white transition-all duration-300 hover:bg-white hover:text-brand-green sm:min-w-[280px]"
+                  className="inline-flex min-h-[48px] min-w-[180px] items-center justify-center rounded-lg bg-[#1B4D3E] hover:bg-[#153D31] px-6 font-google-sans text-sm font-semibold text-white transition-all duration-300 sm:min-w-[200px] sm:text-base shadow-md uppercase tracking-wider"
                   id="bulk-growth-contact-btn"
                 >
-                  Get In Touch
+                  Contact Us
                 </a>
               </div>
             </div>

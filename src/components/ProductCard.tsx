@@ -11,6 +11,7 @@ interface ProductCardProps {
   price: number;
   compareAtPrice?: number;
   weight: string;
+  cardWeightLabel?: string;
   imageUrl: string;
   imageAlt: string;
   subtitle?: string;
@@ -24,6 +25,7 @@ export default function ProductCard({
   price,
   compareAtPrice,
   weight,
+  cardWeightLabel,
   imageUrl,
   imageAlt,
   subtitle,
@@ -59,7 +61,7 @@ export default function ProductCard({
       <div className="flex-grow flex flex-col justify-between">
         <div className="space-y-2 mb-4">
           <Link href={`/shop/${slug}`} className="block">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B4D3E] hover:underline transition-all duration-200">
+            <h3 className="font-google-sans text-lg sm:text-xl font-bold text-[#1B4D3E] hover:underline transition-all duration-200">
               {title}
             </h3>
           </Link>
@@ -68,8 +70,8 @@ export default function ProductCard({
               {subtitle}
             </p>
           )}
-          <p className="text-xs text-brand-muted font-sans uppercase tracking-wider">
-            {weight}
+          <p className="text-xs text-brand-green font-google-sans font-semibold uppercase tracking-wider">
+            {cardWeightLabel || weight}
           </p>
           {!isWholesale ? (
             <div className="flex items-center justify-center gap-2 pt-1">

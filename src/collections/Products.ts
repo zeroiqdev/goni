@@ -64,6 +64,14 @@ export const Products: CollectionConfig = {
       },
     },
     {
+      name: 'cardWeightLabel',
+      type: 'text',
+      admin: {
+        description: 'Optional display text for the shop product card only. Leave blank to use the weight field.',
+        placeholder: 'e.g. 2 pieces, 0.25kg, 200g jar',
+      },
+    },
+    {
       name: 'category',
       type: 'relationship',
       relationTo: 'categories',

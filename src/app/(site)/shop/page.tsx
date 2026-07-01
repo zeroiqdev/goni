@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ShopClient from "@/components/ShopClient";
@@ -14,6 +15,7 @@ interface ProductType {
   price: number;
   compareAtPrice?: number;
   weight: string;
+  cardWeightLabel?: string;
   imageUrl: string;
   imageAlt: string;
   categoryName: string;
@@ -53,6 +55,7 @@ async function getProducts(): Promise<ProductType[]> {
           price: doc.price,
           compareAtPrice: doc.compareAtPrice || undefined,
           weight: doc.weight,
+          cardWeightLabel: doc.cardWeightLabel || undefined,
           imageUrl,
           imageAlt: doc.title,
           categoryName,
@@ -96,9 +99,14 @@ export default async function ShopPage() {
           
           <div className="relative z-10 section-container w-full">
             <div className="max-w-2xl text-left">
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green mb-2">
                 Shop Our Products
               </h1>
+              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 mt-2 flex items-center gap-1.5 select-none">
+                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
+                <span className="text-brand-green/45">&gt;</span>
+                <span className="font-semibold text-brand-green">Shop</span>
+              </nav>
             </div>
           </div>
         </section>
@@ -148,7 +156,7 @@ export default async function ShopPage() {
               <div className="flex items-center gap-3 md:gap-4 select-none">
                 <div className="relative w-12 h-10 md:w-14 md:h-12 flex-shrink-0">
                   <Image
-                    src="https://res.cloudinary.com/dyg7neetr/image/upload/v1781593999/Screenshot_2026-06-16_at_8.07.19_AM-removebg-preview_qezjvs.png"
+                    src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782891958/Screenshot_2026-07-01_at_8.43.43_AM-removebg-preview_q5w7x1.png"
                     alt="NAFDAC Approved Icon"
                     fill
                     className="object-contain"

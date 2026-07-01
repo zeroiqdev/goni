@@ -11,6 +11,7 @@ interface ProductType {
   price: number;
   compareAtPrice?: number;
   weight: string;
+  cardWeightLabel?: string;
   imageUrl: string;
   imageAlt: string;
   categoryName: string;
@@ -212,6 +213,7 @@ export default function ShopClient({ products, categories }: ShopClientProps) {
                 price={product.price}
                 compareAtPrice={product.compareAtPrice}
                 weight={product.weight}
+                cardWeightLabel={product.cardWeightLabel}
                 imageUrl={product.imageUrl}
                 imageAlt={product.imageAlt}
                 subtitle={product.subtitle}

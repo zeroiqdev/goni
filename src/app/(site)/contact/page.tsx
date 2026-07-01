@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactFormClient from "@/components/ContactFormClient";
@@ -26,9 +27,14 @@ export default function ContactPage() {
           {/* Text Overlay */}
           <div className="section-container relative z-10 w-full">
             <div className="max-w-xl text-left">
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green mb-2">
                 Contact Us
               </h1>
+              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 mt-2 flex items-center gap-1.5 select-none">
+                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
+                <span className="text-brand-green/45">&gt;</span>
+                <span className="font-semibold text-brand-green">Contact Us</span>
+              </nav>
             </div>
           </div>
         </section>

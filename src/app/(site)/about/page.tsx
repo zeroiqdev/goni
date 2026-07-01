@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -25,9 +26,14 @@ export default function AboutPage() {
           {/* Text Overlay */}
           <div className="section-container relative z-10 w-full">
             <div className="max-w-xl text-left">
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green mb-2">
                 About Us
               </h1>
+              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 mt-2 flex items-center gap-1.5 select-none">
+                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
+                <span className="text-brand-green/45">&gt;</span>
+                <span className="font-semibold text-brand-green">About Us</span>
+              </nav>
             </div>
           </div>
         </section>
@@ -50,15 +56,15 @@ export default function AboutPage() {
               </div>
 
               {/* Right Column — Text content */}
-              <div className="lg:col-span-7 space-y-6 bg-brand-green rounded-[24px] p-8 md:p-10">
-                <h2 className="font-google-sans text-3xl md:text-4xl font-bold text-[#f2e7db] tracking-tight">
+              <div className="lg:col-span-7 space-y-6">
+                <h2 className="font-google-sans text-3xl md:text-4xl font-bold text-brand-green tracking-tight">
                   Our Story
                 </h2>
                 <div className="space-y-4">
-                  <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed">
+                  <p className="font-sans text-base md:text-lg text-brand-green/90 leading-relaxed">
                     Goni&apos;s Shea Butter is more than a product, it&apos;s a purpose. We work with women in rural communities across Northern Nigeria to produce the highest quality shea butter using traditional methods passed down for generations.
                   </p>
-                  <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed">
+                  <p className="font-sans text-base md:text-lg text-brand-green/90 leading-relaxed">
                     Every purchase you make supports these women, their families and their communities.
                   </p>
                 </div>

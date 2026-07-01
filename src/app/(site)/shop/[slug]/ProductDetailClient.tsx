@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "@/providers/CartContext";
 
 interface ProductDetailClientProps {
@@ -219,7 +220,12 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
             {/* Stock status indicator */}
             <div className="flex items-center gap-3 text-base font-semibold text-[#1B4D3E] pt-2">
-              <div className={`w-4.5 h-4.5 rounded-full ${product.inStock ? "bg-[#1B4D3E]" : "bg-red-600"}`} />
+              <div
+                className={`h-7 w-7 flex-shrink-0 rounded-full ${
+                  product.inStock ? "bg-[#1B4D3E]" : "bg-red-600"
+                }`}
+                aria-hidden="true"
+              />
               <span className="font-sans">{product.inStock ? "In Stock" : "Out of Stock"}</span>
             </div>
           </div>
@@ -282,19 +288,19 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             </span>
           </div>
 
-          {/* Badge 2: No Chemicals */}
+          {/* Badge 2: Handcrafted */}
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 flex-shrink-0">
               <Image
-                src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042455/ICONS_-_Dermatologically_Tested_x1inob.svg"
-                alt="No Chemicals"
+                src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782892990/Screenshot_2026-07-01_at_9.01.51_AM-removebg-preview_pqqp3t.png"
+                alt="Handcrafted"
                 fill
                 style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
                 sizes="40px"
               />
             </div>
             <span className="font-google-sans font-bold text-lg md:text-xl lg:text-2xl whitespace-nowrap">
-              No Chemicals
+              Handcrafted
             </span>
           </div>
 

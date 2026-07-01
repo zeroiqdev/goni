@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#1d3e40] text-white border-t border-white/20" id="footer">
-      <div className="section-container pt-16 pb-12">
+      <div className="section-container pt-16 pb-6">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-4 md:gap-x-6 lg:gap-x-8 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-4 md:gap-x-6 lg:gap-x-8 pb-6">
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="group block space-y-0" id="footer-logo">
@@ -28,7 +28,7 @@ export default function Footer() {
             <h4 className="font-sans text-base md:text-lg font-bold text-white tracking-wide mb-5">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1.5">
               <li>
                 <Link
                   href="/"
@@ -82,7 +82,7 @@ export default function Footer() {
             <h4 className="font-sans text-base md:text-lg font-bold text-white tracking-wide mb-5">
               Customer Care
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1.5">
               <li>
                 <Link
                   href="/faq"
@@ -136,7 +136,7 @@ export default function Footer() {
             <h4 className="font-sans text-base md:text-lg font-bold text-white tracking-wide mb-5">
               Contact Us
             </h4>
-            <ul className="space-y-3 text-sm font-sans text-white/90">
+            <ul className="space-y-1.5 text-sm font-sans text-white/90">
               <li>
                 <a
                   href="mailto:gonisheabutter@gmail.com"
@@ -227,7 +227,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar — Copyright */}
-        <div className="pt-10 mt-6">
+        <div className="pt-4 mt-2">
           <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-bold font-sans text-white select-none text-center">
             <svg className="w-7 h-7 md:w-8 md:h-8 text-white inline-block shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
