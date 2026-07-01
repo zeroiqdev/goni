@@ -196,7 +196,7 @@ export default function ShopClient({ products, categories }: ShopClientProps) {
       {/* Product Grid Container */}
       <div className="lg:col-span-3 space-y-6">
         <div className="flex items-center justify-between pb-4 border-b border-[#e2d5c5]">
-          <h2 className="font-serif text-xl sm:text-2xl font-bold italic text-brand-green">
+          <h2 className="font-google-sans text-xl sm:text-2xl font-bold text-brand-green">
             Showing {filteredProducts.length} Results
           </h2>
         </div>

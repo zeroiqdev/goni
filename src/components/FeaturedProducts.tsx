@@ -53,7 +53,7 @@ export default function FeaturedProducts() {
           {products.map((product) => (
             <div
               key={product.name}
-              className="bg-brand-cream/50 rounded-sm flex flex-col items-center text-center px-6 py-8 transition-all duration-300 hover:shadow-md"
+              className="bg-[#f2e7db] rounded-sm flex flex-col items-center text-center px-6 py-8 transition-all duration-300 hover:shadow-md"
             >
               {/* Product Image */}
               <div className="relative w-full h-52 md:h-56 mb-6">

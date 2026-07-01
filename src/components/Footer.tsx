@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-[#1d3e40] text-white border-t border-white/20" id="footer">
       <div className="section-container pt-16 pb-12">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-4 md:gap-x-6 lg:gap-x-8 pb-16">
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="group block space-y-0" id="footer-logo">
