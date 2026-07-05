@@ -34,7 +34,7 @@ export default function BulkPage() {
       <main className="flex-grow pt-20 animate-fade-in" id="bulk-page">
         {/* Banner Section */}
         <section
-          className="relative w-full h-[130px] sm:h-[180px] md:h-[240px] lg:h-[300px] flex items-center overflow-hidden bg-[#e6cfb6]"
+          className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[400px] flex items-center overflow-hidden bg-[#e6cfb6]"
           id="bulk-banner"
         >
           {/* Background Image */}
@@ -47,7 +47,7 @@ export default function BulkPage() {
               className="object-contain object-right"
               sizes="100vw"
             />
-            {/* Gradient mask to hide the leaf shadow on the left and blend seamlessly */}
+            {/* Gradient mask to remove the leaf shadow on the left */}
             <div
               className="absolute inset-y-0 left-0 w-full sm:w-[75%] md:w-[65%] lg:w-[60%] z-10 pointer-events-none"
               style={{ background: "linear-gradient(to right, #e6cfb6 0%, #e6cfb6 70%, transparent 100%)" }}
@@ -74,18 +74,18 @@ export default function BulkPage() {
           </div>
         </section>
 
-        {/* Trust Banner (Same as product detail page, bg: #FAF2EA, text/icons: #1B4D3E) */}
-        <section className="mt-3 bg-[#FAF2EA] py-3 border-y border-[#E9E1D7]/30 px-4 sm:px-8 lg:px-16 overflow-x-auto" id="bulk-trust-banner">
-          <div className="flex flex-row flex-nowrap items-center justify-start sm:justify-center gap-5 sm:gap-8 md:gap-10 lg:gap-14 text-[#1B4D3E] min-w-max">
+        {/* Trust Banner (Stacked: icon on top, text below, all in one row) */}
+        <section className="bg-[#FAF2EA] py-5 border-y border-[#E9E1D7]/30 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" id="bulk-trust-banner">
+          <div className="flex flex-row items-start justify-between sm:justify-center gap-2 sm:gap-12 md:gap-16 lg:gap-24 text-[#1B4D3E]">
             {/* Badge 1: Women-Sourced */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 sm:w-7 sm:h-7 text-[#1B4D3E]"
+                className="w-6 h-6 sm:w-10 sm:h-10 text-[#1B4D3E]"
               >
                 <path
                   strokeLinecap="round"
@@ -93,55 +93,55 @@ export default function BulkPage() {
                   d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
                 />
               </svg>
-              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
                 Women-Sourced
               </span>
             </div>
 
             {/* Badge 2: Handcrafted */}
-            <div className="flex items-center gap-2">
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <div className="relative w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
                 <Image
                   src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782892990/Screenshot_2026-07-01_at_9.01.51_AM-removebg-preview_pqqp3t.png"
                   alt="Handcrafted"
                   fill
                   style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
-                  sizes="28px"
+                  sizes="40px"
                 />
               </div>
-              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
                 Handcrafted
               </span>
             </div>
 
             {/* Badge 3: NAFDAC Approved */}
-            <div className="flex items-center gap-2">
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <div className="relative w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
                 <Image
                   src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042455/idZQnoE5i__1775042204657-removebg-preview_jtltnf.png"
                   alt="NAFDAC Approved"
                   fill
                   style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
-                  sizes="28px"
+                  sizes="40px"
                 />
               </div>
-              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
                 NAFDAC Approved
               </span>
             </div>
 
             {/* Badge 4: Natural */}
-            <div className="flex items-center gap-2">
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <div className="relative w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
                 <Image
                   src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042870/organic_icon_sndktr.png"
                   alt="Natural"
                   fill
                   style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
-                  sizes="28px"
+                  sizes="40px"
                 />
               </div>
-              <span className="font-google-sans font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
                 Natural
               </span>
             </div>

@@ -30,7 +30,7 @@ export default function BlogPage() {
           id="blog-banner"
           style={{ background: 'linear-gradient(to bottom, #ead5c1, #f5e5d5 35%, #f5e5d5 65%, #f1e0d2)' }}
         >
-          <div className="absolute inset-0">
+          <div className="absolute inset-y-0 right-0 w-[55%] sm:w-[65%] md:w-full">
             <Image
               src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782891961/ChatGPT_Image_May_12_2026_12_14_58_PM_2_sy45fz.png"
               alt="Our Blog Banner — Goni's Shea Butter products"
@@ -42,16 +42,16 @@ export default function BlogPage() {
           </div>
 
           <div className="relative z-10 section-container w-full">
-            <div className="max-w-sm text-left">
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green mb-2">
+            <div className="max-w-[180px] sm:max-w-xs md:max-w-sm text-left">
+              <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green mb-2">
                 Our Blog
               </h1>
-              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 mt-2 flex items-center gap-1.5 select-none">
+              <nav className="font-google-sans text-[10px] sm:text-sm text-brand-green/80 mt-1 sm:mt-2 flex items-center gap-1.5 select-none">
                 <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
                 <span className="text-brand-green/45">&gt;</span>
                 <span className="font-semibold text-brand-green">Our Blog</span>
               </nav>
-              <p className="font-google-sans text-[11px] sm:text-xs md:text-sm lg:text-base text-brand-green/80 mt-3 max-w-xs leading-relaxed">
+              <p className="font-google-sans text-[10px] sm:text-xs md:text-sm lg:text-base text-brand-green/80 mt-2 sm:mt-3 max-w-[160px] sm:max-w-xs leading-relaxed">
                 Tips, stories, and guides on shea butter, skincare, and natural living.
               </p>
             </div>

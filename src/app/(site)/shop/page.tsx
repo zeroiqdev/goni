@@ -156,7 +156,7 @@ export default async function ShopPage() {
               <div className="flex items-center gap-3 md:gap-4 select-none">
                 <div className="relative w-12 h-10 md:w-14 md:h-12 flex-shrink-0">
                   <Image
-                    src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782891958/Screenshot_2026-07-01_at_8.43.43_AM-removebg-preview_q5w7x1.png"
+                    src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042455/idZQnoE5i__1775042204657-removebg-preview_jtltnf.png"
                     alt="NAFDAC Approved Icon"
                     fill
                     className="object-contain"

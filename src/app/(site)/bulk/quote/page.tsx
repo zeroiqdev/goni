@@ -141,21 +141,23 @@ export default function WholesaleQuotePage() {
       <Navbar />
       <main className="flex-grow pt-20 animate-fade-in" id="wholesale-quote-page">
         <section className="relative h-[130px] w-full overflow-hidden bg-[#efe0c5] sm:h-[180px] md:h-[240px] lg:h-[300px]" id="wholesale-quote-banner">
-          <Image
-            src="https://res.cloudinary.com/dyg7neetr/image/upload/v1780834338/ChatGPT_Image_May_14_2026_04_28_09_PM_bvwts7.png"
-            alt="Goni's Shea Butter wholesale product range"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-          />
+          <div className="absolute inset-y-0 right-0 w-[55%] sm:w-[65%] md:w-full">
+            <Image
+              src="https://res.cloudinary.com/dyg7neetr/image/upload/v1780834338/ChatGPT_Image_May_14_2026_04_28_09_PM_bvwts7.png"
+              alt="Goni's Shea Butter wholesale product range"
+              fill
+              priority
+              className="object-cover object-right"
+              sizes="100vw"
+            />
+          </div>
 
           <div className="section-container relative z-10 flex h-full items-center">
-            <div className="max-w-[240px] text-brand-green drop-shadow-sm sm:max-w-sm md:max-w-lg">
-              <h1 className="font-serif text-xl font-bold italic leading-tight sm:text-2xl md:text-4xl lg:text-5xl">
+            <div className="max-w-[180px] text-brand-green sm:max-w-sm md:max-w-lg">
+              <h1 className="font-serif text-lg font-bold italic leading-tight sm:text-2xl md:text-4xl lg:text-5xl">
                 Request a Wholesale Quote
               </h1>
-              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 mt-2 flex items-center gap-1.5 select-none">
+              <nav className="font-google-sans text-[10px] sm:text-sm text-brand-green/80 mt-1 sm:mt-2 flex items-center gap-1.5 select-none">
                 <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
                 <span className="text-brand-green/45">&gt;</span>
                 <span className="font-semibold text-brand-green">Request Quote</span>
@@ -167,22 +169,80 @@ export default function WholesaleQuotePage() {
           </div>
         </section>
 
-        <section className="w-full bg-white py-4" id="wholesale-quote-trust-banner">
-          <div className="section-container">
-            <div className="grid gap-4 rounded-2xl bg-[#f8f3ef] px-5 py-5 text-brand-green shadow-card sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
-              {trustItems.map((item) => (
-                <div key={item.label} className="flex items-center justify-center gap-3 lg:justify-start">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center">
-                    {item.icon}
-                  </span>
-                  <span className="font-google-sans text-xl leading-tight sm:text-2xl">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
+        {/* Trust Banner (Stacked: icon on top, text below, all in one row) */}
+        <section className="bg-[#FAF2EA] py-5 border-y border-[#E9E1D7]/30 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" id="wholesale-quote-trust-banner">
+          <div className="flex flex-row items-start justify-between sm:justify-center gap-2 sm:gap-12 md:gap-16 lg:gap-24 text-[#1B4D3E]">
+            {/* Badge 1: Women-Sourced */}
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 sm:w-10 sm:h-10 text-[#1B4D3E]"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
+                />
+              </svg>
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
+                Women-Sourced
+              </span>
+            </div>
+
+            {/* Badge 2: Handcrafted */}
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <div className="relative w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
+                <Image
+                  src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782892990/Screenshot_2026-07-01_at_9.01.51_AM-removebg-preview_pqqp3t.png"
+                  alt="Handcrafted"
+                  fill
+                  style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
+                  sizes="40px"
+                />
+              </div>
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
+                Handcrafted
+              </span>
+            </div>
+
+            {/* Badge 3: NAFDAC Approved */}
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <div className="relative w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
+                <Image
+                  src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042455/idZQnoE5i__1775042204657-removebg-preview_jtltnf.png"
+                  alt="NAFDAC Approved"
+                  fill
+                  style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
+                  sizes="40px"
+                />
+              </div>
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
+                NAFDAC Approved
+              </span>
+            </div>
+
+            {/* Badge 4: Natural */}
+            <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
+              <div className="relative w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
+                <Image
+                  src="https://res.cloudinary.com/dyg7neetr/image/upload/v1775042870/organic_icon_sndktr.png"
+                  alt="Natural"
+                  fill
+                  style={{ filter: "brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(98%) hue-rotate(111deg) brightness(200%) contrast(179%)" }}
+                  sizes="40px"
+                />
+              </div>
+              <span className="font-google-sans font-bold text-[10px] sm:text-lg md:text-xl lg:text-2xl text-center leading-tight">
+                Natural
+              </span>
             </div>
           </div>
         </section>
+
 
         <section className="bg-white py-12 md:py-16" id="wholesale-inquiry-form-section">
           <div className="section-container">
