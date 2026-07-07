@@ -1,6 +1,8 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
+import { cloudinaryAdapter } from './src/lib/cloudinaryAdapter'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 import path from 'path'
@@ -32,6 +34,18 @@ export default buildConfig({
     push: true,
     idType: 'uuid',
   }),
+  plugins: [
+    cloudStoragePlugin({
+      collections: {
+        media: {
+          adapter: cloudinaryAdapter({
+            folder: 'goni-media',
+          }),
+          disablePayloadAccessControl: true,
+        },
+      },
+    }),
+  ],
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

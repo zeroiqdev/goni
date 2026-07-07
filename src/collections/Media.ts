@@ -7,6 +7,7 @@ export const Media: CollectionConfig = {
   },
   upload: {
     staticDir: 'media',
+    disableLocalStorage: true,
     imageSizes: [
       {
         name: 'thumbnail',
