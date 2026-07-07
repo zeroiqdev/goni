@@ -16,31 +16,28 @@ import { Orders } from './src/collections/Orders'
 import { Inquiries } from './src/collections/Inquiries'
 import { migrations } from './src/migrations'
 
-// Automatically remove dev-mode migration marker and register migrations as completed
+// Ensure migration records exist in the database to prevent Payload from re-running them
 if (process.env.DATABASE_URI) {
   const client = new pg.Client({
     connectionString: process.env.DATABASE_URI,
   })
   try {
     await client.connect()
-    // Check if the dev marker exists
-    const devCheck = await client.query("SELECT id FROM payload_migrations WHERE batch = -1 LIMIT 1;")
-    if (devCheck.rows.length > 0) {
-      // Remove the dev marker
-      await client.query("DELETE FROM payload_migrations WHERE batch = -1;")
-      // Mark both migrations as already completed so Payload doesn't re-run them
-      await client.query(`
-        INSERT INTO payload_migrations (id, name, batch, created_at, updated_at)
-        VALUES
-          (gen_random_uuid(), '20260618_034158_init_schema', 1, now(), now()),
-          (gen_random_uuid(), '20260707_120000_add_cloudinary_public_ids', 2, now(), now())
-        ON CONFLICT DO NOTHING;
-      `)
-      console.log("Cleared dev migration marker and registered migrations as completed.")
+    // Remove any dev-mode marker
+    await client.query("DELETE FROM payload_migrations WHERE batch = -1;")
+    // Ensure both migrations are registered as completed (skip if already present)
+    const existing = await client.query("SELECT name FROM payload_migrations WHERE name IN ('20260618_034158_init_schema', '20260707_120000_add_cloudinary_public_ids');")
+    const existingNames = existing.rows.map((r: { name: string }) => r.name)
+    if (!existingNames.includes('20260618_034158_init_schema')) {
+      await client.query("INSERT INTO payload_migrations (id, name, batch, created_at, updated_at) VALUES (gen_random_uuid(), '20260618_034158_init_schema', 1, now(), now());")
+    }
+    if (!existingNames.includes('20260707_120000_add_cloudinary_public_ids')) {
+      await client.query("INSERT INTO payload_migrations (id, name, batch, created_at, updated_at) VALUES (gen_random_uuid(), '20260707_120000_add_cloudinary_public_ids', 2, now(), now());")
     }
     await client.end()
+    console.log("Migration records verified.")
   } catch (err) {
-    console.error("Error clearing dev migration marker:", err)
+    console.error("Error verifying migration records:", err)
   }
 }
 
