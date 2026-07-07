@@ -6,6 +6,7 @@ import { cloudinaryAdapter } from './src/lib/cloudinaryAdapter'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import pg from 'pg'
 
 import { Users } from './src/collections/Users'
 import { Products } from './src/collections/Products'
@@ -14,6 +15,21 @@ import { Media } from './src/collections/Media'
 import { Orders } from './src/collections/Orders'
 import { Inquiries } from './src/collections/Inquiries'
 import { migrations } from './src/migrations'
+
+// Automatically remove dev-mode migration marker to prevent blocking interactive prompts on production builds
+if (process.env.DATABASE_URI) {
+  const client = new pg.Client({
+    connectionString: process.env.DATABASE_URI,
+  })
+  try {
+    await client.connect()
+    await client.query("DELETE FROM payload_migrations WHERE batch = -1;")
+    await client.end()
+    console.log("Successfully cleared dev migration marker from database.")
+  } catch (err) {
+    console.error("Error clearing dev migration marker:", err)
+  }
+}
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
