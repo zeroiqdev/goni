@@ -32,7 +32,7 @@ export const cloudinaryAdapter = (options?: { folder?: string }): Adapter => {
                     cloudinaryPublicId: result?.public_id,
                   })
                 } else {
-                  resolve()
+                  resolve(undefined)
                 }
               }
             }
