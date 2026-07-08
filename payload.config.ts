@@ -37,12 +37,13 @@ if (process.env.DATABASE_URI) {
       await client.query("INSERT INTO payload_migrations (id, name, batch, created_at, updated_at) VALUES (gen_random_uuid(), '20260707_120000_add_cloudinary_public_ids', 2, now(), now());")
     }
 
-    // Direct schema fix to ensure media table has Cloudinary columns on production database
+    // Direct schema fix to ensure media and products tables have correct columns on production database
     await client.query(`
       ALTER TABLE "media" ADD COLUMN IF NOT EXISTS "cloudinary_public_id" varchar;
       ALTER TABLE "media" ADD COLUMN IF NOT EXISTS "sizes_thumbnail_cloudinary_public_id" varchar;
       ALTER TABLE "media" ADD COLUMN IF NOT EXISTS "sizes_card_cloudinary_public_id" varchar;
       ALTER TABLE "media" ADD COLUMN IF NOT EXISTS "sizes_hero_cloudinary_public_id" varchar;
+      ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "card_weight_label" varchar;
     `)
 
     await client.end()
