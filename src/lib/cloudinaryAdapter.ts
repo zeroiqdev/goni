@@ -15,11 +15,11 @@ export const cloudinaryAdapter = (options?: { folder?: string }): Adapter => {
     return {
       name: 'cloudinary',
       handleUpload: async ({ file, data }) => {
-        return new Promise<void>((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           const uploadStream = cloudinary.uploader.upload_stream(
             {
               folder,
-              public_id: data.filename?.replace(/\.[^/.]+$/, '') || data.id,
+              public_id: file.filename.replace(/\.[^/.]+$/, ''),
               resource_type: 'auto',
             },
             (error, result) => {
@@ -27,10 +27,13 @@ export const cloudinaryAdapter = (options?: { folder?: string }): Adapter => {
                 console.error('Cloudinary upload error:', error)
                 reject(error)
               } else {
-                // Update the file data so that Payload stores these fields in the database
-                data.url = result?.secure_url
-                data.cloudinaryPublicId = result?.public_id
-                resolve()
+                if (file.filename === data.filename) {
+                  resolve({
+                    cloudinaryPublicId: result?.public_id,
+                  })
+                } else {
+                  resolve()
+                }
               }
             }
           )
@@ -47,8 +50,9 @@ export const cloudinaryAdapter = (options?: { folder?: string }): Adapter => {
           }
         }
       },
-      generateURL: ({ data }) => {
-        return data.url
+      generateURL: ({ filename }) => {
+        const cloudName = process.env.CLOUDINARY_CLOUD_NAME
+        return `https://res.cloudinary.com/${cloudName}/image/upload/${folder}/${filename}`
       },
       staticHandler: () => {
         return new Response('Not implemented', { status: 501 })
