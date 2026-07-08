@@ -18,8 +18,10 @@ import { migrations } from './src/migrations'
 
 // Ensure migration records exist and correct columns are present in the database
 if (process.env.DATABASE_URI) {
+  const isLocal = process.env.DATABASE_URI.includes('127.0.0.1') || process.env.DATABASE_URI.includes('localhost')
   const client = new pg.Client({
     connectionString: process.env.DATABASE_URI,
+    ssl: isLocal ? false : { rejectUnauthorized: false },
   })
   try {
     await client.connect()
