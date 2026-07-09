@@ -126,8 +126,14 @@ async function authenticateFez(): Promise<string> {
  * Build authenticated headers for Fez API requests.
  * Automatically logs in if no valid token is cached.
  */
-async function getFezHeaders(): Promise<HeadersInit> {
+async function getFezHeaders(forceRefresh = false): Promise<HeadersInit> {
   const { secretKey } = getFezConfig()
+  
+  if (forceRefresh) {
+    cachedAuthToken = null
+    tokenExpiresAt = 0
+  }
+
   const authToken = await authenticateFez()
 
   const headers: HeadersInit = {
@@ -172,8 +178,8 @@ export async function fetchFezDeliveryCost({
   }
 
   try {
-    const headers = await getFezHeaders()
-    const response = await fetchWithTimeout(`${baseUrl}/order/cost`, {
+    let headers = await getFezHeaders()
+    let response = await fetchWithTimeout(`${baseUrl}/order/cost`, {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -183,6 +189,21 @@ export async function fetchFezDeliveryCost({
       }),
       cache: 'no-store',
     })
+
+    if (response.status === 401) {
+      console.warn('Fez token expired (401), refreshing token and retrying cost lookup...')
+      headers = await getFezHeaders(true)
+      response = await fetchWithTimeout(`${baseUrl}/order/cost`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          state: normalizeNigeriaState(state),
+          pickUpState: normalizeNigeriaState(pickUpState),
+          weight: Math.max(weight || 0, 0.1),
+        }),
+        cache: 'no-store',
+      })
+    }
 
     if (!response.ok) throw new Error(`Fez cost request failed with ${response.status}`)
 
@@ -230,8 +251,8 @@ export async function createFezOrder({
   }
 
   try {
-    const headers = await getFezHeaders()
-    const response = await fetchWithTimeout(`${baseUrl}/order`, {
+    let headers = await getFezHeaders()
+    let response = await fetchWithTimeout(`${baseUrl}/order`, {
       method: 'POST',
       headers,
       body: JSON.stringify([
@@ -253,6 +274,33 @@ export async function createFezOrder({
       ]),
       cache: 'no-store',
     })
+
+    if (response.status === 401) {
+      console.warn('Fez token expired (401), refreshing token and retrying order creation...')
+      headers = await getFezHeaders(true)
+      response = await fetchWithTimeout(`${baseUrl}/order`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify([
+          {
+            recipientAddress: [customer.address, customer.city].filter(Boolean).join(', '),
+            recipientState: normalizeNigeriaState(customer.state),
+            recipientName: customer.name,
+            recipientPhone: customer.phone,
+            recipientEmail: customer.email,
+            uniqueID: orderNumber,
+            BatchID: orderNumber,
+            itemDescription,
+            valueOfItem: String(Math.round(valueOfItem)),
+            weight: Math.max(Math.ceil(weight || 0), 1),
+            pickUpState: normalizeNigeriaState(pickUpState),
+            isItemCod: false,
+            fragile: false,
+          },
+        ]),
+        cache: 'no-store',
+      })
+    }
 
     if (!response.ok) throw new Error(`Fez order request failed with ${response.status}`)
 
