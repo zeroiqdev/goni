@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       shippingFee: null,
       unavailable: true,
-      error: 'Could not calculate delivery fee. Please confirm your delivery state and try again.',
+      error: err instanceof Error ? err.message : 'Could not calculate delivery fee. Please confirm your delivery state and try again.',
     })
   }
 }
