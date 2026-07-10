@@ -300,16 +300,6 @@ export default function WholesaleQuotePage() {
             </div>
           </div>
         </section>
-
-        <section className="relative h-[160px] w-full overflow-hidden bg-[#ead8bb] sm:h-[220px] md:h-[300px] lg:h-[380px] flex items-center justify-center" id="wholesale-final-banner">
-          <Image
-            src="https://res.cloudinary.com/dyg7neetr/image/upload/v1780834337/1d7c82b0-483c-4d3f-a90a-76835e1d9531_nxosjq.png"
-            alt="Goni's Shea Butter wholesale banner"
-            fill
-            className="object-cover object-center pointer-events-none"
-            sizes="100vw"
-          />
-        </section>
       </main>
       <Footer />
     </>
