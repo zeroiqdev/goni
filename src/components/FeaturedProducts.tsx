@@ -9,7 +9,7 @@ const products = [
     image:
       "https://res.cloudinary.com/dyg7neetr/image/upload/v1780561755/PHOTO-2026-05-03-00-49-01-removebg-preview_y7yk8s.png",
     cta: "Add to Cart",
-    href: "/shop",
+    href: "/shop/Whipped-Natural-Shea-Butter",
     filled: true,
   },
   {
@@ -19,7 +19,7 @@ const products = [
     image:
       "https://res.cloudinary.com/dyg7neetr/image/upload/v1780561757/PHOTO-2026-05-03-00-49-02-removebg-preview_f05esa.png",
     cta: "Add to Cart",
-    href: "/shop",
+    href: "/shop/Goni-raw-shea-butter-500g",
     filled: true,
   },
   {
@@ -30,6 +30,7 @@ const products = [
       "https://res.cloudinary.com/dyg7neetr/image/upload/v1780561756/PHOTO-2026-05-03-00-49-02_2-removebg-preview_sin3mo.png",
     cta: "Request Quote",
     href: "/bulk/quote?product=15kg%20Bucket",
+    detailsHref: "/shop/15kg-wholesale-bucket",
     filled: false,
   },
 ];
@@ -50,55 +51,64 @@ export default function FeaturedProducts() {
 
         {/* Product Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {products.map((product) => (
-            <div
-              key={product.name}
-              className="bg-[#f2e7db] rounded-sm flex flex-col items-center text-center px-6 py-8 transition-all duration-300 hover:shadow-md"
-            >
-              {/* Product Image */}
-              <div className="relative w-full h-52 md:h-56 mb-6">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
+          {products.map((product) => {
+            const detailsUrl = product.detailsHref || product.href;
 
-              <div className="flex flex-1 flex-col items-center">
-                {/* Product Info */}
-                <h3 className="font-google-sans text-xl md:text-2xl font-semibold text-brand-green mb-1">
-                  {product.name}
-                </h3>
-                <p className="text-sm text-brand-green/80 font-google-sans mb-4 max-w-[200px]">
-                  {product.description}
-                </p>
-
-                {/* Price */}
-                <div className="mb-5 flex min-h-[28px] items-center">
-                  {product.price && (
-                    <p className="font-google-sans text-xl font-bold text-brand-green">
-                      {product.price}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* CTA Button */}
-              <Link
-                href={product.href}
-                className={`mt-auto inline-flex min-h-[48px] min-w-[150px] items-center justify-center px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
-                  product.filled
-                    ? "bg-brand-green text-white hover:bg-brand-green-dark"
-                    : "bg-white text-brand-dark border border-brand-dark/30 hover:border-brand-green hover:text-brand-green"
-                }`}
-                id={`product-cta-${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+            return (
+              <div
+                key={product.name}
+                className="bg-[#f2e7db] rounded-sm flex flex-col items-center text-center px-6 py-8 transition-all duration-300 hover:shadow-md"
               >
-                {product.cta}
-              </Link>
-            </div>
-          ))}
+                {/* Product Image Link */}
+                <Link
+                  href={detailsUrl}
+                  className="relative w-full h-52 md:h-56 mb-6 block hover:opacity-90 transition-opacity"
+                >
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </Link>
+
+                <div className="flex flex-1 flex-col items-center">
+                  {/* Product Info / Title Link */}
+                  <h3 className="font-google-sans text-xl md:text-2xl font-semibold text-brand-green mb-1 hover:text-brand-green/80 transition-colors">
+                    <Link href={detailsUrl}>
+                      {product.name}
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-brand-green/80 font-google-sans mb-4 max-w-[200px]">
+                    {product.description}
+                  </p>
+
+                  {/* Price */}
+                  <div className="mb-5 flex min-h-[28px] items-center">
+                    {product.price && (
+                      <p className="font-google-sans text-xl font-bold text-brand-green">
+                        {product.price}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <Link
+                  href={product.href}
+                  className={`mt-auto inline-flex min-h-[48px] min-w-[150px] items-center justify-center px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
+                    product.filled
+                      ? "bg-brand-green text-white hover:bg-brand-green-dark"
+                      : "bg-white text-brand-dark border border-brand-dark/30 hover:border-brand-green hover:text-brand-green"
+                  }`}
+                  id={`product-cta-${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  {product.cta}
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
