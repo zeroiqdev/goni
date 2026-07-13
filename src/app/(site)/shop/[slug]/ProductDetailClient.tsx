@@ -12,7 +12,7 @@ interface ProductDetailClientProps {
     slug: string;
     price: number;
     compareAtPrice?: number;
-    weight: string;
+    weight?: string;
     imageUrl: string;
     imageAlt: string;
     descriptionText: string;
@@ -81,7 +81,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       title: product.title,
       slug: product.slug,
       price: product.price,
-      weight: product.weight,
+      weight: product.weight || "",
       imageUrl: product.imageUrl,
     }, quantity);
 

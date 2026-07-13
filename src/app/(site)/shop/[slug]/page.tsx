@@ -7,13 +7,15 @@ import React from "react";
   import { getPayload } from "payload";
   import config from "../../../../../payload.config";
 
+  export const dynamic = 'force-dynamic';
+
   interface ProductType {
     id: string;
     title: string;
     slug: string;
     price: number;
     compareAtPrice?: number;
-    weight: string;
+    weight?: string;
     imageUrl: string;
     imageAlt: string;
     descriptionText: string;
@@ -31,22 +33,33 @@ import React from "react";
     
     try {
       if (richText.root && richText.root.children) {
-        let text = "";
-        const traverse = (node: any) => {
+        const lines: string[] = [];
+        
+        const traverse = (node: any): string => {
           if (node.text) {
-            text += node.text + " ";
+            return node.text;
           }
+          
           if (node.children) {
-            node.children.forEach(traverse);
+            const childText = node.children.map(traverse).join("");
+            if (["paragraph", "heading", "listitem", "quote"].includes(node.type)) {
+              if (childText.trim()) {
+                lines.push(childText);
+              }
+              return "";
+            }
+            return childText;
           }
+          return "";
         };
+        
         richText.root.children.forEach(traverse);
-        return text.trim();
+        return lines.join("\n\n").trim();
       }
     } catch (e) {
       // fallback
     }
-    return JSON.stringify(richText);
+    return "";
   }
 
   async function getProductBySlug(slug: string): Promise<ProductType | null> {
@@ -85,7 +98,7 @@ import React from "react";
           slug: doc.slug,
           price: doc.price,
           compareAtPrice: doc.compareAtPrice || undefined,
-          weight: doc.weight,
+          weight: doc.weight || undefined,
           imageUrl,
           imageAlt,
           descriptionText: extractTextFromRichText(doc.description) || "Premium shea butter from Northern Nigeria.",

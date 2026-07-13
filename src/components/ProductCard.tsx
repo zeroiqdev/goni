@@ -10,7 +10,7 @@ interface ProductCardProps {
   slug: string;
   price: number;
   compareAtPrice?: number;
-  weight: string;
+  weight?: string;
   cardWeightLabel?: string;
   imageUrl: string;
   imageAlt: string;
@@ -70,9 +70,11 @@ export default function ProductCard({
               {subtitle}
             </p>
           )}
-          <p className="text-xs text-brand-green font-google-sans font-semibold uppercase tracking-wider">
-            {cardWeightLabel || weight}
-          </p>
+          {(cardWeightLabel || weight) && (
+            <p className="text-xs text-brand-green font-google-sans font-semibold uppercase tracking-wider">
+              {cardWeightLabel || weight}
+            </p>
+          )}
           {!isWholesale ? (
             <div className="flex items-center justify-center gap-2 pt-1">
               <span className="text-xl font-bold text-brand-dark font-sans">
@@ -102,7 +104,7 @@ export default function ProductCard({
           </Link>
         ) : (
           <button
-            onClick={() => addToCart({ id, title, slug, price, weight, imageUrl })}
+            onClick={() => addToCart({ id, title, slug, price, weight: weight || "", imageUrl })}
             className="w-full bg-[#1B4D3E] text-white py-3.5 px-4 rounded-lg text-sm font-semibold font-sans
                        hover:bg-[#153D31] transition-all duration-300 uppercase tracking-wider shadow-sm"
             id={`add-to-cart-${slug}`}
