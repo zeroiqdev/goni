@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getPayload } from "payload";
+import config from "@/../payload.config";
+import FeaturedAddToCartButton from "./FeaturedAddToCartButton";
 
-const products = [
+const fallbackProducts = [
   {
     name: "200g Whipped",
     description: "Perfect for Personal Use",
@@ -35,7 +38,52 @@ const products = [
   },
 ];
 
-export default function FeaturedProducts() {
+export default async function FeaturedProducts() {
+  // Query actual database products on the server side
+  let dbProducts: any[] = [];
+  try {
+    const payload = await getPayload({ config });
+    const result = await payload.find({
+      collection: "products",
+      where: {
+        slug: {
+          in: [
+            "Whipped-Natural-Shea-Butter",
+            "Goni-raw-shea-butter-500g",
+            "15kg-wholesale-bucket",
+            "whipped-shea-butter-lavender",
+            "pure-unrefined-shea-butter-1kg",
+            "shea-butter-gift-set-premium"
+          ],
+        },
+      },
+      depth: 2,
+    });
+    dbProducts = result.docs || [];
+  } catch (err) {
+    console.error("Failed to fetch featured products from database:", err);
+  }
+
+  // Find matching database product or fallback
+  const getDbProduct = (fallbackProduct: typeof fallbackProducts[0]) => {
+    if (fallbackProduct.name === "200g Whipped") {
+      return dbProducts.find(
+        (p) => p.slug === "Whipped-Natural-Shea-Butter" || p.slug.includes("whipped")
+      );
+    }
+    if (fallbackProduct.name === "1kg Pouch") {
+      return dbProducts.find(
+        (p) => p.slug === "Goni-raw-shea-butter-500g" || p.slug.includes("1kg") || p.slug.includes("pouch")
+      );
+    }
+    if (fallbackProduct.name === "15kg Bucket") {
+      return dbProducts.find(
+        (p) => p.slug === "15kg-wholesale-bucket" || p.slug.includes("bucket")
+      );
+    }
+    return null;
+  };
+
   return (
     <section className="bg-white py-16 md:py-20" id="featured-products">
       <div className="section-container">
@@ -51,12 +99,29 @@ export default function FeaturedProducts() {
 
         {/* Product Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {products.map((product) => {
-            const detailsUrl = product.detailsHref || product.href;
+          {fallbackProducts.map((fallbackProduct) => {
+            const dbProduct = getDbProduct(fallbackProduct);
+            
+            // Resolve correct URL
+            const detailsUrl = dbProduct 
+              ? `/shop/${dbProduct.slug}`
+              : (fallbackProduct.detailsHref || fallbackProduct.href);
+
+            // Resolve correct Image URL
+            const imageDoc = dbProduct?.images?.[0]?.image;
+            const imageUrl = typeof imageDoc === "object" && imageDoc?.url
+              ? imageDoc.url
+              : fallbackProduct.image;
+
+            // Resolve correct Price text
+            const priceVal = dbProduct ? dbProduct.price : null;
+            const priceText = priceVal 
+              ? `₦${priceVal.toLocaleString()}` 
+              : fallbackProduct.price;
 
             return (
               <div
-                key={product.name}
+                key={fallbackProduct.name}
                 className="bg-[#f2e7db] rounded-sm flex flex-col items-center text-center px-6 py-8 transition-all duration-300 hover:shadow-md"
               >
                 {/* Product Image Link */}
@@ -65,8 +130,8 @@ export default function FeaturedProducts() {
                   className="relative w-full h-52 md:h-56 mb-6 block hover:opacity-90 transition-opacity"
                 >
                   <Image
-                    src={product.image}
-                    alt={product.name}
+                    src={imageUrl}
+                    alt={fallbackProduct.name}
                     fill
                     className="object-contain"
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -77,35 +142,50 @@ export default function FeaturedProducts() {
                   {/* Product Info / Title Link */}
                   <h3 className="font-google-sans text-xl md:text-2xl font-semibold text-brand-green mb-1 hover:text-brand-green/80 transition-colors">
                     <Link href={detailsUrl}>
-                      {product.name}
+                      {fallbackProduct.name}
                     </Link>
                   </h3>
                   <p className="text-sm text-brand-green/80 font-google-sans mb-4 max-w-[200px]">
-                    {product.description}
+                    {fallbackProduct.description}
                   </p>
 
                   {/* Price */}
                   <div className="mb-5 flex min-h-[28px] items-center">
-                    {product.price && (
+                    {priceText && (
                       <p className="font-google-sans text-xl font-bold text-brand-green">
-                        {product.price}
+                        {priceText}
                       </p>
                     )}
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <Link
-                  href={product.href}
-                  className={`mt-auto inline-flex min-h-[48px] min-w-[150px] items-center justify-center px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
-                    product.filled
-                      ? "bg-brand-green text-white hover:bg-brand-green-dark"
-                      : "bg-white text-brand-dark border border-brand-dark/30 hover:border-brand-green hover:text-brand-green"
-                  }`}
-                  id={`product-cta-${product.name.toLowerCase().replace(/\s+/g, "-")}`}
-                >
-                  {product.cta}
-                </Link>
+                {/* CTA Button or Add To Cart Component */}
+                {fallbackProduct.cta === "Add to Cart" && dbProduct ? (
+                  <FeaturedAddToCartButton
+                    product={{
+                      id: dbProduct.id,
+                      title: dbProduct.title,
+                      slug: dbProduct.slug,
+                      price: dbProduct.price,
+                      weight: dbProduct.weight || "200g",
+                      imageUrl,
+                    }}
+                    className="mt-auto inline-flex min-h-[48px] min-w-[150px] items-center justify-center px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg bg-brand-green text-white hover:bg-brand-green-dark"
+                    idAttr={`product-cta-${fallbackProduct.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  />
+                ) : (
+                  <Link
+                    href={fallbackProduct.href}
+                    className={`mt-auto inline-flex min-h-[48px] min-w-[150px] items-center justify-center px-8 py-3 text-sm font-google-sans font-semibold tracking-wide transition-all duration-300 rounded-lg ${
+                      fallbackProduct.filled
+                        ? "bg-brand-green text-white hover:bg-brand-green-dark"
+                        : "bg-white text-brand-dark border border-brand-dark/30 hover:border-brand-green hover:text-brand-green"
+                    }`}
+                    id={`product-cta-${fallbackProduct.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    {fallbackProduct.cta}
+                  </Link>
+                )}
               </div>
             );
           })}

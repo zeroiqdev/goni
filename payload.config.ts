@@ -44,6 +44,10 @@ if (process.env.DATABASE_URI) {
       ALTER TABLE "media" ADD COLUMN IF NOT EXISTS "sizes_card_cloudinary_public_id" varchar;
       ALTER TABLE "media" ADD COLUMN IF NOT EXISTS "sizes_hero_cloudinary_public_id" varchar;
       ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "card_weight_label" varchar;
+      ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "ingredients" jsonb;
+      ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "how_to_use" jsonb;
+      ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "shipping_and_delivery" jsonb;
+      ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "return_and_refunds" jsonb;
     `)
 
     await client.end()

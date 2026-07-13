@@ -9,10 +9,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="group block space-y-0" id="footer-logo">
-              <h3 className="font-serif text-3xl font-bold italic text-white leading-none group-hover:text-white/80 transition-colors">
+              <h3 className="font-serif text-3xl font-bold italic text-white leading-none group-hover:text-white/80 transition-colors tracking-tight">
                 Goni&apos;s
               </h3>
-              <h3 className="font-serif text-3xl font-bold italic text-white leading-none group-hover:text-white/80 transition-colors">
+              <h3 className="font-serif text-3xl font-bold italic text-white leading-none group-hover:text-white/80 transition-colors tracking-tight">
                 Shea Butter
               </h3>
             </Link>

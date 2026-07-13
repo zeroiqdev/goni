@@ -105,5 +105,33 @@ export const Products: CollectionConfig = {
         description: 'Feature this product on the home page',
       },
     },
+    {
+      name: 'ingredients',
+      type: 'richText',
+      admin: {
+        description: 'Ingredients list for this product',
+      },
+    },
+    {
+      name: 'howToUse',
+      type: 'richText',
+      admin: {
+        description: 'How to use instructions for this product',
+      },
+    },
+    {
+      name: 'shippingAndDelivery',
+      type: 'richText',
+      admin: {
+        description: 'Shipping & Delivery information for this product',
+      },
+    },
+    {
+      name: 'returnAndRefunds',
+      type: 'richText',
+      admin: {
+        description: 'Return & Refunds policy for this product',
+      },
+    },
   ],
 }

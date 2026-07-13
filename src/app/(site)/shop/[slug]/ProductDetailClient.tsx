@@ -16,6 +16,10 @@ interface ProductDetailClientProps {
     imageUrl: string;
     imageAlt: string;
     descriptionText: string;
+    ingredientsText?: string;
+    howToUseText?: string;
+    shippingAndDeliveryText?: string;
+    returnAndRefundsText?: string;
     images: Array<{ url: string; alt: string }>;
     inStock: boolean;
   };
@@ -45,28 +49,22 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     {
       id: "ingredients",
       title: "Ingredients",
-      content: "Shea Butter (Vitellaria Paradoxa).",
+      content: product.ingredientsText || "Shea Butter (Vitellaria Paradoxa).",
     },
     {
       id: "how-to-use",
       title: "How to Use",
-      content: (
-        <div className="space-y-3 font-sans text-brand-dark/80 text-sm sm:text-base leading-relaxed">
-          <p>Apply a small amount to clean skin and massage gently until absorbed.</p>
-          <p>For best results, use after bathing or showering while the skin is still slightly damp. It can also be used on dry areas such as hands, feet, elbows and knees.</p>
-          <p>For hair use, apply a small amount to the scalp or hair ends to help seal in moisture.</p>
-        </div>
-      ),
+      content: product.howToUseText || "Apply a small amount to clean skin and massage gently until absorbed. For best results, use after bathing or showering while the skin is still slightly damp. It can also be used on dry areas such as hands, feet, elbows and knees. For hair use, apply a small amount to the scalp or hair ends to help seal in moisture.",
     },
     {
       id: "shipping-delivery",
       title: "Shipping & Delivery",
-      content: "Orders are processed after payment confirmation. Delivery times may vary based on location, and customers will receive delivery details once their order is confirmed. Please ensure your delivery address and phone number are accurate before checkout.",
+      content: product.shippingAndDeliveryText || "Orders are processed after payment confirmation. Delivery times may vary based on location, and customers will receive delivery details once their order is confirmed. Please ensure your delivery address and phone number are accurate before checkout.",
     },
     {
       id: "returns-refunds",
       title: "Returns & Refunds",
-      content: "For hygiene and safety reasons, returns are only accepted for items that arrive damaged, defective, or incorrect. Please notify us within 24–48 hours of delivery with clear photos of the product and packaging. Items must be unused, unopened, and in their original packaging. Approved claims will be eligible for a refund or replacement.",
+      content: product.returnAndRefundsText || "For hygiene and safety reasons, returns are only accepted for items that arrive damaged, defective, or incorrect. Please notify us within 24–48 hours of delivery with clear photos of the product and packaging. Items must be unused, unopened, and in their original packaging. Approved claims will be eligible for a refund or replacement.",
     },
   ];
 

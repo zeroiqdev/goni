@@ -17,6 +17,10 @@ import React from "react";
     imageUrl: string;
     imageAlt: string;
     descriptionText: string;
+    ingredientsText?: string;
+    howToUseText?: string;
+    shippingAndDeliveryText?: string;
+    returnAndRefundsText?: string;
     images: Array<{ url: string; alt: string }>;
     inStock: boolean;
   }
@@ -85,6 +89,10 @@ import React from "react";
           imageUrl,
           imageAlt,
           descriptionText: extractTextFromRichText(doc.description) || "Premium shea butter from Northern Nigeria.",
+          ingredientsText: extractTextFromRichText(doc.ingredients) || undefined,
+          howToUseText: extractTextFromRichText(doc.howToUse) || undefined,
+          shippingAndDeliveryText: extractTextFromRichText(doc.shippingAndDelivery) || undefined,
+          returnAndRefundsText: extractTextFromRichText(doc.returnAndRefunds) || undefined,
           images,
           inStock: doc.inStock !== false,
         };
