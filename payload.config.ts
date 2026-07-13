@@ -48,6 +48,8 @@ if (process.env.DATABASE_URI) {
       ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "how_to_use" jsonb;
       ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "shipping_and_delivery" jsonb;
       ALTER TABLE "products" ADD COLUMN IF NOT EXISTS "return_and_refunds" jsonb;
+      ALTER TABLE "orders" ADD COLUMN IF NOT EXISTS "subtotal" numeric;
+      ALTER TABLE "orders" ADD COLUMN IF NOT EXISTS "vat" numeric;
     `)
 
     await client.end()

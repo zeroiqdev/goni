@@ -63,6 +63,8 @@ export const Orders: CollectionConfig = {
             throw new Error('Delivery cost calculation is currently available for Nigeria orders only.');
           }
 
+          data.subtotal = calculatedTotal * 0.925;
+          data.vat = calculatedTotal * 0.075;
           data.shippingFee = shippingFee;
           data.total = calculatedTotal + shippingFee;
         }
@@ -183,6 +185,16 @@ export const Orders: CollectionConfig = {
       name: 'total',
       type: 'number',
       required: true,
+    },
+    {
+      name: 'subtotal',
+      type: 'number',
+      defaultValue: 0,
+    },
+    {
+      name: 'vat',
+      type: 'number',
+      defaultValue: 0,
     },
     {
       name: 'shippingFee',

@@ -66,7 +66,7 @@ export default function ProductCard({
             </h3>
           </Link>
           {subtitle && (
-            <p className="text-sm text-brand-muted font-sans font-medium italic">
+            <p className="text-sm text-brand-muted font-sans font-medium">
               {subtitle}
             </p>
           )}

@@ -83,6 +83,8 @@ export default function CartPage() {
     () => cart.reduce((total, item) => total + parseWeightKg(item.weight) * item.quantity, 0),
     [cart],
   );
+  const subtotal = cartTotal * 0.925;
+  const vat = cartTotal * 0.075;
   const orderTotal = cartTotal + (shippingFee ?? 0);
   const isNigeriaDelivery = form.country.trim().toLowerCase() === "nigeria";
   const hasCalculatedShipping = isNigeriaDelivery && shippingFee !== null && shippingFee > 0;
@@ -318,6 +320,8 @@ export default function CartPage() {
           streetAddress: form.address,
         },
         shippingFee,
+        subtotal,
+        vat,
         total: orderTotal,
         status: "pending",
       };
@@ -608,7 +612,11 @@ export default function CartPage() {
                       <div className="border-t border-brand-green/5 pt-6 space-y-3">
                         <div className="flex justify-between text-sm font-sans text-brand-muted">
                           <span>Subtotal</span>
-                          <span>₦{cartTotal.toLocaleString()}</span>
+                          <span>₦{subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                        </div>
+                        <div className="flex justify-between text-sm font-sans text-brand-muted">
+                          <span>VAT (7.5%)</span>
+                          <span>₦{vat.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                         </div>
                         <div className="flex justify-between text-sm font-sans text-brand-muted">
                           <span>Shipping</span>
