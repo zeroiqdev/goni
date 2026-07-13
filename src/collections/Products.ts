@@ -58,6 +58,7 @@ export const Products: CollectionConfig = {
     {
       name: 'weight',
       type: 'text',
+      required: true,
       admin: {
         placeholder: 'e.g. 500g, 1kg, 15kg bucket',
       },

@@ -70,9 +70,9 @@ export default function ProductCard({
               {subtitle}
             </p>
           )}
-          {(cardWeightLabel || weight) && (
+          {cardWeightLabel && (
             <p className="text-xs text-brand-green font-google-sans font-semibold uppercase tracking-wider">
-              {cardWeightLabel || weight}
+              {cardWeightLabel}
             </p>
           )}
           {!isWholesale ? (
