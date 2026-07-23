@@ -34,44 +34,29 @@ export default function BulkPage() {
       <main className="flex-grow pt-20 animate-fade-in" id="bulk-page">
         {/* Banner Section */}
         <section
-          className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[400px] flex items-center overflow-hidden bg-[#e6cfb6]"
+          className="relative w-full overflow-hidden"
           id="bulk-banner"
         >
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image
-              src="https://res.cloudinary.com/dyg7neetr/image/upload/v1780828208/Banner_d11u8g.png"
-              alt="Bulk Shea Butter for Businesses That Care"
-              fill
-              priority
-              className="object-contain object-right"
-              sizes="100vw"
-            />
-            {/* Gradient mask to remove the leaf shadow on the left */}
-            <div
-              className="absolute inset-y-0 left-0 w-full sm:w-[75%] md:w-[65%] lg:w-[60%] z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, #e6cfb6 0%, #e6cfb6 70%, transparent 100%)" }}
-            />
+          {/* Heading & breadcrumb are baked into the banner image;
+              keep them accessible to screen readers and SEO. */}
+          <div className="sr-only">
+            <h1>Bulk Shea Butter for Businesses That Care</h1>
+            <nav aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span>&gt;</span>
+              <span>Bulk &amp; Wholesale</span>
+            </nav>
+            <p>Premium, 100% pure shea butter sourced from Northern Nigeria. Perfect for brands, manufacturers, and retail worldwide.</p>
           </div>
-
-          {/* Text Overlay */}
-          <div className="section-container relative z-20 w-full">
-            <div className="max-w-xl text-left space-y-2 sm:space-y-4">
-              <h1 className="font-serif text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold italic text-brand-green leading-tight">
-                Bulk Shea Butter<br />
-                for Businesses<br />
-                That Care
-              </h1>
-              <nav className="font-google-sans text-xs sm:text-sm text-brand-green/80 flex items-center gap-1.5 select-none pt-1">
-                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
-                <span className="text-brand-green/45">&gt;</span>
-                <span className="font-semibold text-brand-green">Bulk & Wholesale</span>
-              </nav>
-              <p className="font-google-sans text-[11px] sm:text-xs md:text-sm lg:text-base text-brand-green/90 max-w-xs sm:max-w-md leading-relaxed">
-                Premium, 100% pure shea butter sourced from Northern Nigeria. Perfect for brands, manufacturers, and retail worldwide.
-              </p>
-            </div>
-          </div>
+          <Image
+            src="https://res.cloudinary.com/dyg7neetr/image/upload/v1784800268/ChatGPT_Image_Jul_14_2026_11_16_40_AM_clnfbs.png"
+            alt="Bulk Shea Butter for Businesses That Care — premium, 100% pure shea butter sourced from Northern Nigeria for brands, manufacturers, and retail worldwide"
+            width={1983}
+            height={793}
+            priority
+            className="w-full h-auto"
+            sizes="100vw"
+          />
         </section>
 
         {/* Trust Banner (Stacked: icon on top, text below, all in one row) */}

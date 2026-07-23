@@ -19,6 +19,7 @@ import React from "react";
     imageUrl: string;
     imageAlt: string;
     descriptionText: string;
+    shortDescriptionText?: string;
     ingredientsText?: string;
     howToUseText?: string;
     shippingAndDeliveryText?: string;
@@ -102,6 +103,7 @@ import React from "react";
           imageUrl,
           imageAlt,
           descriptionText: extractTextFromRichText(doc.description) || "Premium shea butter from Northern Nigeria.",
+          shortDescriptionText: doc.shortDescription || undefined,
           ingredientsText: extractTextFromRichText(doc.ingredients) || undefined,
           howToUseText: extractTextFromRichText(doc.howToUse) || undefined,
           shippingAndDeliveryText: extractTextFromRichText(doc.shippingAndDelivery) || undefined,

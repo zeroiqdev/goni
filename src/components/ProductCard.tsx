@@ -40,7 +40,7 @@ export default function ProductCard({
     >
       {/* Image */}
       <Link href={`/shop/${slug}`} className="block relative overflow-hidden mb-5">
-        <div className="relative w-full aspect-square bg-[#eae0d5]">
+        <div className="relative w-full aspect-square bg-[#f3ece4]">
           <Image
             src={imageUrl}
             alt={imageAlt}

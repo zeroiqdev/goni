@@ -25,8 +25,18 @@ export const Products: CollectionConfig = {
       },
     },
     {
+      name: 'shortDescription',
+      type: 'textarea',
+      admin: {
+        description: 'Short summary shown on the product page directly below the price',
+      },
+    },
+    {
       name: 'description',
       type: 'richText',
+      admin: {
+        description: "Full description shown in the 'Description' accordion section below the trust banner (Women-Sourced / Handcrafted / NAFDAC strip) on the product page",
+      },
     },
     {
       name: 'subtitle',

@@ -26,36 +26,29 @@ export default function BlogPage() {
       <main className="flex-grow pt-20 bg-brand-light-bg" id="blog-page">
         {/* Banner Section */}
         <section
-          className="relative w-full h-[130px] sm:h-[180px] md:h-[240px] lg:h-[300px] flex items-center overflow-hidden mb-12"
+          className="relative w-full overflow-hidden mb-12"
           id="blog-banner"
-          style={{ background: 'linear-gradient(to bottom, #ead5c1, #f5e5d5 35%, #f5e5d5 65%, #f1e0d2)' }}
         >
-          <div className="absolute inset-y-0 right-0 w-[55%] sm:w-[65%] md:w-full">
-            <Image
-              src="https://res.cloudinary.com/dyg7neetr/image/upload/v1782891961/ChatGPT_Image_May_12_2026_12_14_58_PM_2_sy45fz.png"
-              alt="Our Blog Banner — Goni's Shea Butter products"
-              fill
-              priority
-              className="object-contain object-right"
-              sizes="100vw"
-            />
+          {/* Heading & breadcrumb are baked into the banner image;
+              keep them accessible to screen readers and SEO. */}
+          <div className="sr-only">
+            <h1>Our Blog</h1>
+            <nav aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span>&gt;</span>
+              <span>Our Blog</span>
+            </nav>
+            <p>Tips, stories, and guides on shea butter, skincare, and natural living.</p>
           </div>
-
-          <div className="relative z-10 section-container w-full">
-            <div className="max-w-[180px] sm:max-w-xs md:max-w-sm text-left">
-              <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-brand-green mb-2">
-                Our Blog
-              </h1>
-              <nav className="font-google-sans text-[10px] sm:text-sm text-brand-green/80 mt-1 sm:mt-2 flex items-center gap-1.5 select-none">
-                <Link href="/" className="hover:underline font-semibold text-brand-green">Home</Link>
-                <span className="text-brand-green/45">&gt;</span>
-                <span className="font-semibold text-brand-green">Our Blog</span>
-              </nav>
-              <p className="font-google-sans text-[10px] sm:text-xs md:text-sm lg:text-base text-brand-green/80 mt-2 sm:mt-3 max-w-[160px] sm:max-w-xs leading-relaxed">
-                Tips, stories, and guides on shea butter, skincare, and natural living.
-              </p>
-            </div>
-          </div>
+          <Image
+            src="https://res.cloudinary.com/dyg7neetr/image/upload/v1784800267/ChatGPT_Image_Jul_14_2026_11_05_58_AM_rnnwnw.png"
+            alt="Our Blog — tips, stories, and guides on shea butter, skincare, and natural living. Goni's Shea Butter products"
+            width={1983}
+            height={793}
+            priority
+            className="w-full h-auto"
+            sizes="100vw"
+          />
         </section>
 
         <section className="bg-white pb-7 pt-8 md:pb-8 md:pt-10" id="blog-lower-section">

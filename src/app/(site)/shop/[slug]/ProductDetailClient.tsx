@@ -16,6 +16,7 @@ interface ProductDetailClientProps {
     imageUrl: string;
     imageAlt: string;
     descriptionText: string;
+    shortDescriptionText?: string;
     ingredientsText?: string;
     howToUseText?: string;
     shippingAndDeliveryText?: string;
@@ -169,9 +170,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             )}
           </div>
 
-          {/* Description */}
+          {/* Description (short summary below price) */}
           <p className="text-base sm:text-lg text-brand-dark/95 leading-relaxed font-sans font-normal">
-            {product.descriptionText}
+            {product.shortDescriptionText || product.descriptionText}
           </p>
 
           {/* Checklist with circular outline SVG icons */}
